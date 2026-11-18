@@ -142,16 +142,95 @@ const projects = [
 const projectsGrid = document.querySelector("#projectsGrid");
 const filterButtons = document.querySelectorAll(".filter-button");
 const moreProjectsButton = document.querySelector("#moreProjects");
-const detailDialog = document.querySelector("#detailDialog");
-const dialogTitle = document.querySelector("#dialogTitle");
-const dialogDescription = document.querySelector("#dialogDescription");
-const dialogHighlights = document.querySelector("#dialogHighlights");
-const dialogTags = document.querySelector("#dialogTags");
 const menuToggle = document.querySelector(".menu-toggle");
 const navMenu = document.querySelector("#primary-navigation");
+const navLinks = navMenu.querySelectorAll('a[href^="#"]');
+const navSections = [...navLinks]
+  .map((link) => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
+const skillsSearch = document.querySelector("#skillsSearch");
+const clearSkillsSearchButton = document.querySelector("#clearSkillsSearch");
+const skillsSearchStatus = document.querySelector("#skillsSearchStatus");
+const skillCards = document.querySelectorAll("#skillsGrid .skill-card");
 
 let activeFilter = "all";
 let showAllProjects = false;
+
+function setActiveNavLink(sectionId) {
+  navLinks.forEach((link) => {
+    if (link.getAttribute("href") === `#${sectionId}`) {
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+const initialSectionId = window.location.hash.slice(1);
+setActiveNavLink(
+  navSections.some((section) => section.id === initialSectionId)
+    ? initialSectionId
+    : "home"
+);
+
+if ("IntersectionObserver" in window) {
+  const sectionVisibility = new Map();
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        sectionVisibility.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0);
+      });
+
+      const activeSection = [...sectionVisibility.entries()]
+        .filter(([, ratio]) => ratio > 0)
+        .sort((first, second) => second[1] - first[1])[0];
+
+      if (activeSection) setActiveNavLink(activeSection[0]);
+    },
+    { rootMargin: "-25% 0px -60% 0px", threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] }
+  );
+
+  navSections.forEach((section) => sectionObserver.observe(section));
+}
+
+function filterSkills() {
+  const query = skillsSearch.value.trim().toLocaleLowerCase();
+  let visibleCategories = 0;
+  let visibleSkills = 0;
+
+  skillCards.forEach((card) => {
+    const categoryMatches = card.querySelector("h3").textContent.toLocaleLowerCase().includes(query);
+    let matchedSkills = 0;
+
+    card.querySelectorAll(".chip-list span").forEach((skill) => {
+      const matches = !query || categoryMatches || skill.textContent.toLocaleLowerCase().includes(query);
+      skill.hidden = !matches;
+      if (matches) matchedSkills += 1;
+    });
+
+    card.hidden = query.length > 0 && matchedSkills === 0;
+    if (!card.hidden) visibleCategories += 1;
+    visibleSkills += matchedSkills;
+  });
+
+  clearSkillsSearchButton.hidden = query.length === 0;
+  skillsSearchStatus.textContent = query
+    ? `${visibleSkills} matching ${visibleSkills === 1 ? "skill" : "skills"} in ${visibleCategories} ${visibleCategories === 1 ? "category" : "categories"}`
+    : "";
+}
+
+skillsSearch.addEventListener("input", filterSkills);
+clearSkillsSearchButton.addEventListener("click", () => {
+  skillsSearch.value = "";
+  filterSkills();
+  skillsSearch.focus();
+});
+skillsSearch.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && skillsSearch.value) {
+    skillsSearch.value = "";
+    filterSkills();
+  }
+});
 
 function renderProjects() {
   const filteredProjects = projects.filter(
@@ -173,9 +252,6 @@ function renderProjects() {
             <div class="project-tags">
               ${project.tags.map((tag) => `<span>${tag}</span>`).join("")}
             </div>
-            <button class="project-details" type="button" data-project-index="${projects.indexOf(project)}">
-              Project details <span aria-hidden="true">→</span>
-            </button>
           </div>
         </article>
       `
@@ -209,27 +285,6 @@ moreProjectsButton.addEventListener("click", () => {
   renderProjects();
 });
 
-projectsGrid.addEventListener("click", (event) => {
-  const trigger = event.target.closest("[data-project-index]");
-  if (!trigger) return;
-
-  const project = projects[Number(trigger.dataset.projectIndex)];
-  if (!project) return;
-
-  dialogTitle.textContent = project.title;
-  dialogDescription.textContent = project.description;
-  dialogHighlights.innerHTML = (project.details || [])
-    .map((detail) => `<li>${detail}</li>`)
-    .join("");
-  dialogHighlights.hidden = !project.details?.length;
-  dialogTags.innerHTML = project.tags.map((tag) => `<span>${tag}</span>`).join("");
-  detailDialog.showModal();
-});
-
-detailDialog.addEventListener("click", (event) => {
-  if (event.target === detailDialog) detailDialog.close();
-});
-
 menuToggle.addEventListener("click", () => {
   const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
   menuToggle.setAttribute("aria-expanded", String(!isExpanded));
@@ -238,7 +293,9 @@ menuToggle.addEventListener("click", () => {
 });
 
 navMenu.addEventListener("click", (event) => {
-  if (event.target.closest("a")) {
+  const link = event.target.closest("a");
+  if (link) {
+    setActiveNavLink(link.getAttribute("href").slice(1));
     menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.setAttribute("aria-label", "Open navigation menu");
     navMenu.classList.remove("is-open");

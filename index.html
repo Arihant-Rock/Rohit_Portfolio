@@ -7,7 +7,7 @@
       name="description"
       content="Rohit Patil is a Data Scientist and AI Engineer building enterprise-grade AI applications with machine learning, generative AI, and scalable agentic workflows."
     />
-    <meta name="theme-color" content="#090909" />
+    <meta name="theme-color" content="#07111f" />
     <title>Rohit Patil | Data Scientist &amp; AI Engineer</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -61,7 +61,7 @@
           <p class="hero-role">Data Scientist &amp; AI Engineer</p>
           <p class="hero-summary">
             I build enterprise-grade AI applications using Python, Machine Learning,
-            Deep Learning, and Generative AI—developing intelligent solutions
+            Deep Learning, and Generative AI - developing intelligent solutions
             powered by LLMs, RAG architectures, multi-agent systems, and scalable AI workflows.
           </p>
           <div class="hero-actions">
@@ -81,15 +81,15 @@
             <h2>About <span>Me</span></h2>
           </div>
           <div class="about-layout">
-            <div class="portrait-card reveal" aria-label="Rohit Patil">
-              <div class="portrait-halo"></div>
-              <div class="portrait-monogram" aria-hidden="true">RP</div>
-              <span class="portrait-caption">DATA SCIENTIST &amp; AI ENGINEER</span>
-              <span class="portrait-decoration decoration-one" aria-hidden="true"></span>
-              <span class="portrait-decoration decoration-two" aria-hidden="true"></span>
-            </div>
-            <div class="about-copy reveal">
-              <section class="about-subsection">
+            <div class="about-intro">
+              <div class="portrait-card reveal" aria-label="Rohit Patil">
+                <div class="portrait-halo"></div>
+                <div class="portrait-monogram" aria-hidden="true">RP</div>
+                <span class="portrait-caption">DATA SCIENTIST &amp; AI ENGINEER</span>
+                <span class="portrait-decoration decoration-one" aria-hidden="true"></span>
+                <span class="portrait-decoration decoration-two" aria-hidden="true"></span>
+              </div>
+              <section class="about-subsection about-summary reveal">
                 <h3>Professional Summary</h3>
                 <p>
                   I’m a Data Scientist and AI Engineer specializing in Data Science,
@@ -107,7 +107,9 @@
                   including LoRA and QLoRA.
                 </p>
               </section>
-              <section class="about-subsection">
+            </div>
+            <div class="about-details-grid">
+              <section class="about-subsection reveal">
                 <h3>AI &amp; LLM Engineering</h3>
                 <p>
                   I’m highly proficient in Python and SQL, and build multi-agent AI
@@ -124,7 +126,7 @@
                   debugging workflows, and assessing output quality.
                 </p>
               </section>
-              <section class="about-subsection">
+              <section class="about-subsection reveal">
                 <h3>Enterprise AI &amp; Deployment</h3>
                 <p>
                   I develop enterprise Generative AI solutions with Azure AI Foundry,
@@ -141,7 +143,7 @@
                   Responsible AI, secure enterprise deployments, and MLOps/LLMOps.
                 </p>
               </section>
-              <section class="about-subsection">
+              <section class="about-subsection reveal">
                 <h3>Industry Impact</h3>
                 <p>
                   I work across modern AI ecosystems including OpenAI, Hugging Face,
@@ -159,29 +161,29 @@
                   that improve operational efficiency and drive measurable outcomes.
                 </p>
               </section>
-              <div class="about-facts">
-                <article class="fact-card">
-                  <span class="fact-icon" aria-hidden="true">⌂</span>
-                  <div>
-                    <h3>Education</h3>
-                    <p><strong>M.Tech in Artificial Intelligence &amp; Machine Learning</strong> — BITS Pilani<br /><strong>Bachelor of Engineering (B.E.)</strong></p>
-                  </div>
-                </article>
-                <article class="fact-card">
-                  <span class="fact-icon" aria-hidden="true">✦</span>
-                  <div>
-                    <h3>Professional Experience</h3>
-                    <p><strong>4+ years of professional experience</strong> across Healthcare, Finance, Insurance, Pharmaceuticals, and Retail domains.</p>
-                  </div>
-                </article>
-                <article class="fact-card">
-                  <span class="fact-icon" aria-hidden="true">⌘</span>
-                  <div>
-                    <h3>Focus areas</h3>
-                    <p>Python, ML/DL, LLMs, agentic systems, RAG, MCP, A2A, ANP, cloud AI, and MLOps.</p>
-                  </div>
-                </article>
-              </div>
+            </div>
+            <div class="about-facts">
+              <article class="fact-card reveal">
+                <span class="fact-icon" aria-hidden="true">⌂</span>
+                <div>
+                  <h3>Education</h3>
+                  <p><strong>M.Tech in Artificial Intelligence &amp; Machine Learning</strong> — BITS Pilani<br /><strong>Bachelor of Engineering (B.E.)</strong></p>
+                </div>
+              </article>
+              <article class="fact-card reveal">
+                <span class="fact-icon" aria-hidden="true">✦</span>
+                <div>
+                  <h3>Professional Experience</h3>
+                  <p><strong>5+ years of professional experience</strong> across Healthcare, Finance, Insurance, Pharmaceuticals, and Retail domains.</p>
+                </div>
+              </article>
+              <article class="fact-card reveal">
+                <span class="fact-icon" aria-hidden="true">⌘</span>
+                <div>
+                  <h3>Focus areas</h3>
+                  <p>Python, ML/DL, LLMs, agentic systems, RAG, MCP, A2A, ANP, cloud AI, and MLOps.</p>
+                </div>
+              </article>
             </div>
           </div>
         </div>
@@ -193,7 +195,21 @@
             <p class="eyebrow">My toolkit</p>
             <h2>Skills &amp; <span>Technologies</span></h2>
           </div>
-          <div class="skills-grid">
+          <div class="skills-search reveal">
+            <label class="sr-only" for="skillsSearch">Search skills and technologies</label>
+            <input
+              id="skillsSearch"
+              type="search"
+              placeholder="Search skills and technologies..."
+              autocomplete="off"
+              aria-controls="skillsGrid"
+            />
+            <button class="skills-search-clear" id="clearSkillsSearch" type="button" aria-label="Clear skill search" hidden>
+              Clear
+            </button>
+            <p class="skills-search-status" id="skillsSearchStatus" aria-live="polite"></p>
+          </div>
+          <div class="skills-grid" id="skillsGrid">
             <article class="skill-card reveal">
               <div class="skill-card-heading">
                 <span class="skill-icon" aria-hidden="true">✳</span>
@@ -502,15 +518,5 @@
       </div>
     </footer>
 
-    <dialog class="detail-dialog" id="detailDialog" aria-labelledby="dialogTitle">
-      <form method="dialog">
-        <button class="dialog-close" aria-label="Close dialog">×</button>
-      </form>
-      <p class="eyebrow" id="dialogEyebrow">Project details</p>
-      <h2 id="dialogTitle"></h2>
-      <p id="dialogDescription"></p>
-      <ul class="project-highlights" id="dialogHighlights" hidden></ul>
-      <div class="chip-list" id="dialogTags"></div>
-    </dialog>
   </body>
 </html>
