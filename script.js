@@ -193,6 +193,45 @@ if ("IntersectionObserver" in window) {
   navSections.forEach((section) => sectionObserver.observe(section));
 }
 
+const scrollProgress = document.querySelector("#scrollProgress");
+let scrollProgressFrame = null;
+
+function updateScrollProgress() {
+  if (scrollProgressFrame !== null) return;
+
+  scrollProgressFrame = window.requestAnimationFrame(() => {
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+    scrollProgress.style.transform = `scaleX(${progress})`;
+    scrollProgressFrame = null;
+  });
+}
+
+window.addEventListener("scroll", updateScrollProgress, { passive: true });
+window.addEventListener("resize", updateScrollProgress);
+updateScrollProgress();
+
+const hero = document.querySelector(".hero");
+const heroMountains = document.querySelector(".hero-mountains");
+const supportsParallax =
+  window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (hero && heroMountains && supportsParallax) {
+  hero.addEventListener("pointermove", (event) => {
+    const bounds = hero.getBoundingClientRect();
+    const offsetX = ((event.clientX - bounds.left) / bounds.width - 0.5) * -10;
+    const offsetY = ((event.clientY - bounds.top) / bounds.height - 0.5) * -8;
+    heroMountains.style.setProperty("--mountain-offset-x", `${offsetX.toFixed(1)}px`);
+    heroMountains.style.setProperty("--mountain-offset-y", `${offsetY.toFixed(1)}px`);
+  });
+
+  hero.addEventListener("pointerleave", () => {
+    heroMountains.style.setProperty("--mountain-offset-x", "0px");
+    heroMountains.style.setProperty("--mountain-offset-y", "0px");
+  });
+}
+
 function filterSkills() {
   const query = skillsSearch.value.trim().toLocaleLowerCase();
   let visibleCategories = 0;

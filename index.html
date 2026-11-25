@@ -13,13 +13,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
     <header class="site-header">
       <nav class="nav container" aria-label="Main navigation">
         <a class="brand" href="#home" aria-label="AI Engineer, home">
@@ -55,14 +56,19 @@
       <section class="hero" id="home">
         <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
         <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
+        <div class="hero-mountains" aria-hidden="true"></div>
         <div class="hero-content container">
           <p class="hero-greeting">Hi, I'm</p>
           <h1>Rohit <span>Patil</span></h1>
           <p class="hero-role">Data Scientist &amp; AI Engineer</p>
           <p class="hero-summary">
             I build enterprise-grade AI applications using Python, Machine Learning,
-            Deep Learning, and Generative AI - developing intelligent solutions
-            powered by LLMs, RAG architectures, multi-agent systems, and scalable AI workflows.
+            Deep Learning, and Generative AI, developing intelligent solutions powered
+            by LLMs, RAG architectures, multi-agent systems, and scalable AI workflows.
+            Experienced in cloud-based AI platforms such as
+            Azure AI Foundry, AWS Bedrock, and IBM watsonx, with expertise in AI
+            orchestration, agentic workflows, MLOps, and Responsible AI to deliver secure,
+            scalable, and production-ready enterprise AI solutions.
           </p>
           <div class="hero-actions">
             <a class="button" href="#projects">View my work</a>
@@ -92,19 +98,18 @@
               <section class="about-subsection about-summary reveal">
                 <h3>Professional Summary</h3>
                 <p>
-                  I’m a Data Scientist and AI Engineer specializing in Data Science,
-                  Analytics, Machine Learning, Deep Learning, and Generative AI, with
-                  strong expertise in Large Language Models (LLMs), Natural Language
-                  Processing (NLP), and enterprise AI application development.
-                </p>
-                <p>
-                  I design, develop, train, fine-tune, and deploy predictive and
-                  intelligent systems using classical Machine Learning algorithms,
-                  deep learning architectures, neural networks, and transformer-based
-                  models. My hands-on experience includes adapting LLMs and foundation
-                  models for domain-specific applications with Supervised Fine-Tuning
-                  (SFT), Prompt Tuning, and Parameter-Efficient Fine-Tuning (PEFT),
-                  including LoRA and QLoRA.
+                  Data Scientist and AI Engineer with strong expertise in Machine
+                  Learning, Deep Learning, Generative AI, Large Language Models (LLMs),
+                  and Natural Language Processing (NLP). Experienced in designing,
+                  developing, training, fine-tuning, and deploying intelligent AI
+                  systems using classical ML algorithms, deep learning architectures,
+                  neural networks, and transformer-based models. Skilled in adapting
+                  foundation models for domain-specific applications through
+                  Supervised Fine-Tuning (SFT), Prompt Tuning, and Parameter-Efficient
+                  Fine-Tuning (PEFT) techniques, including LoRA and QLoRA. Adept at
+                  translating complex business requirements into scalable, secure, and
+                  production-ready AI solutions that automate workflows, enhance
+                  decision-making, and drive operational efficiency.
                 </p>
               </section>
             </div>
@@ -112,53 +117,97 @@
               <section class="about-subsection reveal">
                 <h3>AI &amp; LLM Engineering</h3>
                 <p>
-                  I’m highly proficient in Python and SQL, and build multi-agent AI
-                  systems with LangChain, LangGraph, CrewAI, and AutoGen. I work with
-                  Model Context Protocol (MCP), Agent2Agent (A2A), and Agent Network
-                  Protocol (ANP) for tool integration, agent communication,
-                  interoperability, and distributed workflows.
+                  Proficient in Python and SQL for developing AI-driven applications
+                  and data-centric solutions. Experienced in building LLM-powered
+                  applications and multi-agent systems using frameworks such as
+                  LangChain, LangGraph, CrewAI, and AutoGen. Strong understanding of
+                  agent communication and interoperability protocols, including Model
+                  Context Protocol (MCP), Agent2Agent (A2A), and Agent Network Protocol
+                  (ANP), enabling seamless tool integration, agent-to-agent
+                  communication, and distributed workflow orchestration.
                 </p>
                 <p>
-                  My work includes Retrieval-Augmented Generation (RAG), LlamaIndex,
-                  and knowledge-driven applications backed by ChromaDB, Pinecone,
-                  FAISS, Milvus, PGVector, Qdrant, and Weaviate. I use LangSmith and
-                  Opik for LLM observability and evaluation, tracing agent execution,
-                  debugging workflows, and assessing output quality.
+                  Skilled in designing and implementing Retrieval-Augmented Generation
+                  (RAG) architectures and knowledge-driven applications using LlamaIndex,
+                  with expertise in building efficient knowledge retrieval pipelines.
+                  Experienced in working with vector databases and similarity search
+                  technologies, including ChromaDB, Pinecone, FAISS, Milvus, PostgreSQL
+                  with PGVector, Qdrant, and Weaviate. Familiar with LLM observability,
+                  tracing, and evaluation tools such as LangSmith and Opik for monitoring
+                  agent execution, debugging workflows, evaluating model outputs, and
+                  improving the reliability and performance of LLM-based applications.
                 </p>
               </section>
               <section class="about-subsection reveal">
-                <h3>Enterprise AI &amp; Deployment</h3>
+                <h3>Enterprise AI Engineering, Architecture &amp; Deployment</h3>
                 <p>
-                  I develop enterprise Generative AI solutions with Azure AI Foundry,
-                  AWS Bedrock, IBM watsonx.ai, and IBM watsonx Orchestrate. I build
-                  Python backends and RESTful APIs, integrate AI/ML models with
-                  enterprise applications, and create interactive interfaces with
-                  React.js, HTML, CSS, and JavaScript.
+                  Experienced in architecting, engineering, and deploying scalable,
+                  enterprise-grade AI solutions across cloud and on-premises environments
+                  using Azure AI Foundry, AWS Bedrock, IBM watsonx.ai, and IBM watsonx
+                  Orchestrate. Skilled in developing production-ready AI applications
+                  through Python-based backend services, RESTful APIs, and seamless
+                  integration of AI/ML models with enterprise applications and business
+                  systems. Proficient in full-stack AI application development using
+                  React.js, JavaScript, HTML5, and CSS3.
                 </p>
                 <p>
-                  I deploy scalable AI solutions in cloud and on-premises environments,
-                  containerizing and orchestrating workloads with Docker and Kubernetes.
-                  My experience also spans API integration, foundation model selection,
-                  prompt engineering, agentic orchestration, model evaluation,
-                  Responsible AI, secure enterprise deployments, and MLOps/LLMOps.
+                  Strong expertise in cloud infrastructure, application deployment, and
+                  DevOps practices, leveraging Docker and Kubernetes for containerization
+                  and orchestration, Nginx for web server configuration and reverse proxy
+                  management, Terraform for Infrastructure as Code (IaC), and GitHub
+                  Actions for CI/CD pipeline automation. Experienced in developing and
+                  operationalizing agentic AI applications using Dify and Langflow for
+                  visual workflow design, LLM integration, tool connectivity, and
+                  intelligent process automation.
+                </p>
+                <p>
+                  Skilled in LLM infrastructure and inference optimization, including
+                  self-hosted and on-premises model serving using vLLM and llama.cpp.
+                  Experienced in foundation model selection, prompt engineering, API
+                  integration, agentic workflow orchestration, model evaluation, and
+                  inference optimization. Familiar with LLM Wiki and Open Knowledge
+                  Format (OKF) concepts for organizing, structuring, and maintaining
+                  interconnected knowledge to support LLM-powered knowledge systems.
+                </p>
+                <p>
+                  Apply Responsible AI principles, enterprise AI governance, model
+                  guardrails, human-in-the-loop (HITL) mechanisms, and security controls
+                  to develop reliable, secure, and production-ready AI systems. Leverage
+                  MLOps and LLMOps practices to streamline deployment pipelines, automate
+                  model lifecycle management, monitor production performance, and ensure
+                  scalability, reliability, and operational efficiency.
+                </p>
+                <p>
+                  Strong understanding of the broader AI ecosystem, including OpenAI,
+                  Hugging Face, Groq, transformer architectures, open-source Large
+                  Language Models (LLMs), and foundation models, with a focus on
+                  leveraging emerging AI technologies to accelerate enterprise AI
+                  adoption, enable intelligent automation, and drive business
+                  transformation.
                 </p>
               </section>
               <section class="about-subsection reveal">
                 <h3>Industry Impact</h3>
                 <p>
-                  I work across modern AI ecosystems including OpenAI, Hugging Face,
-                  Groq, transformer architectures, and open-source LLMs. I use
-                  data-driven methods to solve business challenges, automate enterprise
-                  workflows, and deliver impactful solutions across healthcare, finance,
-                  and other domains.
+                  Leverage data-driven methodologies, advanced analytics, and AI-driven
+                  engineering to solve complex business challenges, automate enterprise
+                  workflows, and deliver scalable solutions across healthcare, finance,
+                  and other industry domains. Focus on translating business requirements
+                  into practical, production-ready AI solutions that improve operational
+                  efficiency, enhance decision-making, and deliver measurable business
+                  value.
                 </p>
                 <p>
-                  A key contribution in Generative AI has been developing multi-agent
-                  chatbot architectures that combine LLMs, RAG pipelines, intelligent
-                  agents, and enterprise API integrations to deliver context-aware,
-                  domain-specific solutions. My focus is turning complex business
-                  requirements into scalable, secure, production-ready AI applications
-                  that improve operational efficiency and drive measurable outcomes.
+                  Key contributions in Generative AI include optimizing LLM inference
+                  costs and latency, improving retrieval accuracy and efficiency through
+                  optimized Retrieval-Augmented Generation (RAG) architectures, and
+                  enhancing overall system performance, scalability, and reliability.
+                  Experienced in addressing complex business requirements through
+                  domain-specific AI solutions, intelligent workflow automation, and
+                  seamless enterprise system integration. Drive the development of
+                  secure, cost-efficient, scalable, and production-ready AI applications
+                  that reduce operational overhead, optimize resource utilization, and
+                  accelerate enterprise AI adoption.
                 </p>
               </section>
             </div>
@@ -259,6 +308,8 @@
                 <span>Retrieval-Augmented Generation (RAG)</span><span>Multi-Agent Systems</span>
                 <span>Vector Databases</span><span>Vector Embeddings</span><span>Fine-Tuning</span>
                 <span>Prompt Engineering</span><span>MCP</span>
+                <span>Responsible AI</span><span>AI Governance</span><span>AI Guardrails</span>
+                <span>Human-in-the-Loop</span><span>AI Safety</span><span>Model Inference</span>
               </div>
             </article>
             <article class="skill-card reveal">
@@ -332,6 +383,7 @@
               </div>
               <div class="chip-list">
                 <span>Docker</span><span>Kubernetes</span><span>Jenkins</span><span>Nginx</span>
+                <span>Terraform</span>
                 <span>CI/CD Pipelines</span><span>REST APIs</span><span>FastAPI</span><span>AWS EC2</span>
                 <span>AWS ECS</span><span>Playwright</span><span>GitHub Actions</span>
               </div>
